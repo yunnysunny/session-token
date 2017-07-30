@@ -36,6 +36,7 @@ async.waterfall([
                 next(err);
                 return console.error(err);
             }
+            token = tokenViaCreate;
             next();
         });
     },
