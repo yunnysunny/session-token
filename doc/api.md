@@ -35,7 +35,7 @@
 | option | <code>Object</code> |  |
 | option.expireTime | <code>Number</code> | Expiration time in second |
 | option.redisKeyPrefix | <code>String</code> | The prefix of redis key to save session data |
-| option.reids | <code>Object</code> | The redis object |
+| option.reids | <code>Object</code> | The redis client used to save session data |
 | option.subReis | <code>Object</code> | The subscribe redis client to receive delete operation form other node.js process, it's useful when you start node in cluster mode. |
 | option.crontabStr | <code>String</code> \| <code>undefined</code> | Crontab string, use for clearing the memeory cache. |
 
