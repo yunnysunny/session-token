@@ -11,6 +11,10 @@
     "token",
     "session"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:yunnysunny/session-token.git"
+  },
   "author": "yunnysunny",
   "license": "MIT",
   "bugs": {
