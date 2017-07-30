@@ -19,7 +19,7 @@
 **Kind**: global class  
 
 * [SessionToken](#SessionToken)
-    * [new SessionToken(expireTime, redisKeyPrefix, reids, subReis, crontabStr)](#new_SessionToken_new)
+    * [new SessionToken(option)](#new_SessionToken_new)
     * [.generate(value, callback)](#SessionToken+generate)
     * [.update(token, value, callback)](#SessionToken+update)
     * [.refresh(token, callback)](#SessionToken+refresh)
@@ -28,15 +28,16 @@
 
 <a name="new_SessionToken_new"></a>
 
-### new SessionToken(expireTime, redisKeyPrefix, reids, subReis, crontabStr)
+### new SessionToken(option)
 
 | Param | Type | Description |
 | --- | --- | --- |
-| expireTime | <code>Number</code> | Expiration time in second |
-| redisKeyPrefix | <code>String</code> | The prefix of redis key to save session data |
-| reids | <code>Object</code> | The redis object |
-| subReis | <code>Object</code> | The subscribe redis client to receive delete operation form other node.js process, it's useful when you start node in cluster mode. |
-| crontabStr | <code>String</code> \| <code>undefined</code> | Crontab string, use for clearing the memeory cache. |
+| option | <code>Object</code> |  |
+| option.expireTime | <code>Number</code> | Expiration time in second |
+| option.redisKeyPrefix | <code>String</code> | The prefix of redis key to save session data |
+| option.reids | <code>Object</code> | The redis object |
+| option.subReis | <code>Object</code> | The subscribe redis client to receive delete operation form other node.js process, it's useful when you start node in cluster mode. |
+| option.crontabStr | <code>String</code> \| <code>undefined</code> | Crontab string, use for clearing the memeory cache. |
 
 <a name="SessionToken+generate"></a>
 
