@@ -13,6 +13,10 @@
   ],
   "author": "yunnysunny",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yunnysunny/session-token/issues"
+  },
+  "homepage": "https://github.com/yunnysunny/session-token",
   "dependencies": {
     "node-slogger": "^0.2.0",
     "later": "^1.2.0",
