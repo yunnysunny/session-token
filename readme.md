@@ -55,7 +55,7 @@ async.waterfall([
 
 ## 3. Api
 
-See the [api](doc/api) doc.
+See the [api](doc/api.md) doc.
 
 ## 4. License
 
