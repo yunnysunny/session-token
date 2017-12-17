@@ -10,7 +10,8 @@ const sessionToken = new SessionToken({
     redisKeyPrefix:'myprefix:mytoken:',//the redis key's prefix
     redis:redisClient,//the redis client object
     subReis:redisSub,
-    maxSize:MAX_SIZE
+    maxSize:MAX_SIZE,
+    useLru:true
 });
 const VALUE = {name:'sunny',id:1};
 const VALUE_UPDATE = {name:'sunny_new',id:1};
