@@ -1,10 +1,11 @@
 {
   "name": "session-token",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A library to create token in redis easily.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive test/ --exit"
+    "test": "mocha --recursive test/ --exit",
+    "doc": "jsdoc2md lib/SessionToken.js > doc/api.md"
   },
   "keywords": [
     "token",
