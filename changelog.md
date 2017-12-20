@@ -1,3 +1,7 @@
+# 0.3.2
+
+1. Add the clusterId parameter to the constructor function.
+
 # 0.3.1
 1. Fixed the issue of saving the data having none expired time.
 
