@@ -1,3 +1,7 @@
+# 0.3.3 
+
+1. Add the feature of disabling the memory cache.
+
 # 0.3.2
 
 1. Add the clusterId parameter to the constructor function.

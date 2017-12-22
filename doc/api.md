@@ -102,16 +102,16 @@ Delete session data via token
 ## SessionTokenOption
 **Kind**: global typedef  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| [expireTime] | <code>Number</code> | Expiration time in second, default is 0, which will be not expired, but when you set the paramter of `option.crontabStr`, it will be cleared at some time still. |
-| redisKeyPrefix | <code>String</code> | The prefix of redis key to save session data |
-| reids | <code>Object</code> | The redis client used to save session data |
-| [subReis] | <code>Object</code> | The subscribe redis client to receive delete operation form other node.js process, it's useful when you start node in cluster mode. |
-| [crontabStr] | <code>String</code> | Crontab string, use for clearing the memeory cache. |
-| [maxSize] | <code>Number</code> | The max size of the cache in memory. |
-| [useLru] | <code>Boolean</code> | Whether to use LRU algorithm to delete the elder elements. It only takes effect when `option.maxSize` is greater than zero. |
-| [clusteId] | <code>String</code> | An id of current process, when not set, it will use random string.  When do the operation of delete or update, SessionToken will publish a message, which is started with a perfix of current clusterId, to redis. Then all the  processes will receive the message  and read the cluster of the message to check whether it from self. But when the subReis is not set, the `clusterId` is useless now. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [expireTime] | <code>Number</code> | <code>0</code> | Expiration time in second, default is 0, which will be not expired, but when you set the paramter of `option.crontabStr`, it will be cleared at some time still. |
+| redisKeyPrefix | <code>String</code> |  | The prefix of redis key to save session data |
+| reids | <code>Object</code> |  | The redis client used to save session data |
+| [subReis] | <code>Object</code> |  | The subscribe redis client to receive delete operation form other node.js process, it's useful when you start node in cluster mode. |
+| [crontabStr] | <code>String</code> |  | Crontab string, use for clearing the memeory cache. |
+| [maxSize] | <code>Number</code> | <code>0</code> | The max size of the cache in memory, default is 0, which will not limit the size of cache in memory. When it passed as -1, the cache in memory will be disabled. |
+| [useLru] | <code>Boolean</code> | <code>false</code> | Whether to use LRU algorithm to delete the elder elements. It only takes effect when `option.maxSize` is greater than zero. |
+| [clusteId] | <code>String</code> |  | An id of current process, when not set, it will use random string.  When do the operation of delete or update, SessionToken will publish a message, which is started with a perfix of current clusterId, to redis. Then all the  processes will receive the message  and read the clusterId of the message to check whether it from self. But when the subReis is not set, the `clusterId` is useless now. |
 
 <a name="SessionTokenCallback"></a>
 
