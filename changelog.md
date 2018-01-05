@@ -1,3 +1,7 @@
+# 0.3.4
+
+1. Fixed the issue of not triggering the delete operation to other node of cluster.
+
 # 0.3.3 
 
 1. Add the feature of disabling the memory cache.

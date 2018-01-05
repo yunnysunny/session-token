@@ -1,18 +1,16 @@
 language: node_js
-# env:
-#   - CC=gcc-7 CXX=g++-7
+env:
+  - REDIS_CLUSTER=127.0.0.1:7000,127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005
+
 node_js:
   - "6"
   - "7"
   - "8"
 
-# addons:
-#   apt:
-#     sources:
-#     - ubuntu-toolchain-r-test
-#     packages:
-#     - gcc-7
-#     - g++-7
+install:
+  make travis-install
+
+script: make travis-run
 
 cache:
   directories:
