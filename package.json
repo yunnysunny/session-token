@@ -31,6 +31,6 @@
     "chai": "^4.1.0",
     "ioredis": "^3.1.2",
     "mocha": "^4.0.1",
-    "mocha-spawn": "git@github.com:yunnysunny/mocha-spawn.git"
+    "mocha-spawn": "https://github.com/yunnysunny/mocha-spawn.git"
   }
 }
