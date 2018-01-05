@@ -1,9 +1,9 @@
 const {expect} = require('chai');
-const cluster = require('cluster');
+// const cluster = require('cluster');
 const Redis = require('ioredis');
-const cp = require('child_process');
-var mochaSpawn = require('mocha-spawn');
-const Q = require('q');
+// const cp = require('child_process');
+const mochaSpawn = require('mocha-spawn');
+// const Q = require('q');
 const SessionToken = require('../../index');
 const {nodes,FIRST_VALUE,VALUE_UPDATE} = require('./config');
 const redisClient = new Redis(nodes);//connect to the redis server of localhost:6379

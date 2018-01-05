@@ -25,14 +25,12 @@
     "later": "^1.2.0",
     "native-linked-list": "^0.2.0",
     "neo-async": "^2.3.0",
-    "node-slogger": "^0.2.0"
+    "node-slogger": "^0.4.3"
   },
   "devDependencies": {
     "chai": "^4.1.0",
     "ioredis": "^3.1.2",
     "mocha": "^4.0.1",
     "mocha-spawn": "git@github.com:yunnysunny/mocha-spawn.git",
-    "object.observe": "^0.2.6",
-    "q": "^1.5.1"
   }
 }
