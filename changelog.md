@@ -1,3 +1,7 @@
+# 0.3.5
+
+1. Add parameter of `cacheClearCallback`, which will be called when the memory cache is cleared.
+
 # 0.3.4
 
 1. Fixed the issue of not triggering the delete operation to other node of cluster.
