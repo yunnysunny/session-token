@@ -1,6 +1,6 @@
 {
   "name": "session-token",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "A library to create token in redis easily.",
   "main": "index.js",
   "scripts": {
@@ -22,9 +22,9 @@
   },
   "homepage": "https://github.com/yunnysunny/session-token",
   "dependencies": {
-    "later": "^1.2.0",
     "native-linked-list": "^0.2.0",
     "neo-async": "^2.3.0",
+    "node-cron": "^1.2.1",
     "node-slogger": "^0.4.3"
   },
   "devDependencies": {

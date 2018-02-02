@@ -1,3 +1,7 @@
+# 0.3.6
+
+1. Use node-cron to do clear task to fix the bug of not triggering the crontab event.
+
 # 0.3.5
 
 1. Add parameter of `cacheClearCallback`, which will be called when the memory cache is cleared.
