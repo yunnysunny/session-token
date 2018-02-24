@@ -1,3 +1,8 @@
+# 0.3.7
+
+1. Fixed the issue of not adding the element to lru list when the count of the lru list does not come up to the SessionToken's `maxSize` limit.
+2. Add parameter of `showMemSizeInterval` to show the current size of cache used in memory.
+
 # 0.3.6
 
 1. Use node-cron to do clear task to fix the bug of not triggering the crontab event.
