@@ -28,6 +28,7 @@ const sessionTokenWithoutLru = new SessionToken({
 const VALUE = {name:'sunny',id:1};
 const LOOP_SIZE = 102400;
 const LruToken = new Array(LOOP_SIZE);
+const GET_LOOP_SIZE = LOOP_SIZE / 10;
 slogger.init({level:'warn'});
 
 describe('lru benchmark test',function() {
@@ -54,6 +55,16 @@ describe('lru benchmark test',function() {
         });
         
     });
+    it('get test with lru',function(done) {
+        async.times(GET_LOOP_SIZE,function(n,next) {
+            sessionTokenWithLru.get(LruToken[n],next)
+        },done);
+    });
+    it('get test with lru again',function(done) {
+        async.times(GET_LOOP_SIZE,function(n,next) {
+            sessionTokenWithLru.get(LruToken[GET_LOOP_SIZE-1-n],next)
+        },done);
+    });
     it('remove all data create via lru session token',function(done) {
         async.each(LruToken,function(token,next) {
             sessionTokenWithLru.delete(token,next);
@@ -70,13 +81,26 @@ describe('lru benchmark test',function() {
             });
         },done);
     });
+    it('get test without lru',function(done) {
+        async.times(GET_LOOP_SIZE,function(n,next) {
+            sessionTokenWithoutLru.get(LruToken[GET_LOOP_SIZE-1-n],next);
+        },done);
+    });
+    it('get test without lru again',function(done) {
+        async.times(GET_LOOP_SIZE,function(n,next) {
+            sessionTokenWithoutLru.get(LruToken[n],next);
+        },done);
+    });
     it('remove all data create via none lru session token',function(done) {
         async.each(LruToken,function(token,next) {
             sessionTokenWithoutLru.delete(token,next);
         },done);
     });
     it('recovery log level',function(done) {
-        slogger.init({level:'trace'});
-        done();
+        setTimeout(function() {
+            slogger.init({level:'trace'});
+            done();
+        },3000);
+        
     });
 });
