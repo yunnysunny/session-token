@@ -1,3 +1,7 @@
+# 0.4.0
+
+1. Add the ability of idle checking to remove the expired items in memory.
+
 # 0.3.7
 
 1. Fixed the issue of not adding the element to lru list when the count of the lru list does not come up to the SessionToken's `maxSize` limit.

@@ -1,6 +1,6 @@
 {
   "name": "session-token",
-  "version": "0.3.7",
+  "version": "0.4.0",
   "description": "A library to create token in redis easily.",
   "main": "index.js",
   "scripts": {
