@@ -29,9 +29,12 @@ const VALUE = {name:'sunny',id:1};
 const LOOP_SIZE = 102400;
 const LruToken = new Array(LOOP_SIZE);
 const GET_LOOP_SIZE = LOOP_SIZE / 10;
-slogger.init({level:'warn'});
+
 
 describe('lru benchmark test',function() {
+    before(function() {
+        slogger.init({level:'warn'});
+    });
     it ('should generate '+LOOP_SIZE+'th tokens success',function(done) {
         async.times(LOOP_SIZE,function(n,next) {
             if (n > MAX_SIZE) {
