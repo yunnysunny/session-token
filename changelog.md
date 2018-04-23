@@ -1,3 +1,7 @@
+# 0.4.1
+
+1. Bump node-slogger to 0.5.1.
+
 # 0.4.0
 
 1. Add the ability of idle checking to remove the expired items in memory.

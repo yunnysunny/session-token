@@ -1,6 +1,6 @@
 {
   "name": "session-token",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A library to create token in redis easily.",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,7 @@
     "native-linked-list": "^0.3.0",
     "neo-async": "^2.3.0",
     "node-cron": "^1.2.1",
-    "node-slogger": "^0.4.3"
+    "node-slogger": "^0.5.1"
   },
   "devDependencies": {
     "chai": "^4.1.0",
