@@ -1,3 +1,7 @@
+# 0.4.2
+
+1. Bump node-slogger to 0.5.2.
+
 # 0.4.1
 
 1. Bump node-slogger to 0.5.1.
