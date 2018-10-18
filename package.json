@@ -1,6 +1,6 @@
 {
   "name": "session-token",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "A library to create token in redis easily.",
   "main": "index.js",
   "scripts": {
@@ -25,12 +25,12 @@
     "native-linked-list": "^0.3.0",
     "neo-async": "^2.3.0",
     "node-cron": "^1.2.1",
-    "node-slogger": "^0.5.2"
+    "node-slogger": "^1.0.2"
   },
   "devDependencies": {
     "chai": "^4.1.0",
     "ioredis": "^3.1.2",
     "mocha": "^4.0.1",
-    "mocha-spawn": "https://github.com/yunnysunny/mocha-spawn.git"
+    "mocha-spawn": "^3.0.3"
   }
 }
