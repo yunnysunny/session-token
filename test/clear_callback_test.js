@@ -18,7 +18,7 @@ describe('crontab test',function() {
             crontabStr:'* * * * *',
             cacheClearCallback:cronCb
         });
-        sessionToken.generate(VALUE,function(err,tokenViaCreate) {//save session
+        sessionToken.generate(VALUE,function(err) {//save session
             if (err) {
                 return done(err);
             }

@@ -35,7 +35,7 @@ describe('lru benchmark test',function() {
     before(function() {
         slogger.init({level:'warn'});
     });
-    it ('should generate '+LOOP_SIZE+'th tokens success',function(done) {
+    it ('should generate '+LOOP_SIZE+'th tokens with lru success',function(done) {
         async.times(LOOP_SIZE,function(n,next) {
             if (n > MAX_SIZE) {
                 // console.log('may overflow now');
@@ -72,6 +72,11 @@ describe('lru benchmark test',function() {
         async.each(LruToken,function(token,next) {
             sessionTokenWithLru.delete(token,next);
         },done);
+    });
+    it('wait for gc finish',function(done) {
+        setTimeout(function() {
+            done();
+        },3000);
     });
     it('bench for none lur',function(done) {
         async.times(LOOP_SIZE,function(n,next) {
