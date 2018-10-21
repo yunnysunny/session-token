@@ -22,7 +22,7 @@ const LruToken = new Array(LOOP_SIZE);
 const GET_LOOP_SIZE = LOOP_SIZE / 10;
 
 
-describe.skip('none lru benchmark test',function() {
+describe('none lru benchmark test',function() {
     before(function() {
         slogger.init({level:'warn'});
     });
