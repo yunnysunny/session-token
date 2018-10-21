@@ -6,11 +6,15 @@ node_js:
   - "6"
   - "7"
   - "8"
+  - "9"
+  - "10"
 
 install:
   make travis-install
 
 script: make travis-run
+
+after_script: npm run coverage
 
 cache:
   directories:
