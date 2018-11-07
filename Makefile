@@ -139,7 +139,7 @@ travis-run:
 
 travis-install:
 	
-	ifeq ($(F1_EXISTS), 0)
+	ifeq ("$(F1_EXISTS)", "0")
 		wget http://download.redis.io/releases/$(REDIS_DIR).tar.gz
 		tar -xzvf $(REDIS_DIR).tar.gz
 		make -C $(REDIS_DIR) -j4
