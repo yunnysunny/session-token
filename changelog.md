@@ -1,3 +1,8 @@
+# 0.5.0
+
+1. Bump node-slogger to 1.0.2.
+2. Don't refresh the expired time in `get` function.
+
 # 0.4.2
 
 1. Bump node-slogger to 0.5.2.
