@@ -138,11 +138,6 @@ travis-run:
 	#make stop
 
 travis-install:
-	
-	ifeq ("$(F1_EXISTS)", "0")
-		wget http://download.redis.io/releases/$(REDIS_DIR).tar.gz
-		tar -xzvf $(REDIS_DIR).tar.gz
-		make -C $(REDIS_DIR) -j4
-		sleep 3
-	endif
+	@if [ ! -e $(REDIS_DIR)/src/redis-server ]; then wget http://download.redis.io/releases/$(REDIS_DIR).tar.gz && tar -xzvf $(REDIS_DIR).tar.gz && make -C $(REDIS_DIR) -j4 &&	sleep 3; fi
+
 	
