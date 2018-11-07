@@ -137,8 +137,11 @@ travis-run:
 	#make stop
 
 travis-install:
-	[ ! -e $(REDIS_DIR)/src/redis-server ] && wget http://download.redis.io/releases/$(REDIS_DIR).tar.gz || true
-	tar -xzvf $(REDIS_DIR).tar.gz
-	make -C $(REDIS_DIR) -j4
-	sleep 3
-	gem install redis
+	F1_EXISTS=$(shell [ ! -e $(REDIS_DIR)/src/redis-server ] && echo 1 || echo 0 )
+	ifeq ($(F1_EXISTS), 0)
+		wget http://download.redis.io/releases/$(REDIS_DIR).tar.gz
+		tar -xzvf $(REDIS_DIR).tar.gz
+		make -C $(REDIS_DIR) -j4
+		sleep 3
+	endif
+	
