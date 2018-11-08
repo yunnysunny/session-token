@@ -1,3 +1,7 @@
+# 0.5.2
+
+1. Bump native-linked-list to 0.3.1 to add support for node 10.
+
 # 0.5.0
 
 1. Bump node-slogger to 1.0.2.
