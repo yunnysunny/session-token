@@ -1,12 +1,12 @@
 {
   "name": "session-token",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "description": "A library to create token in redis easily.",
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha --recursive test/ --timeout 999999 --exit",
-    "coverage":"nyc report --reporter=text-lcov | coveralls",
-    "doc": "jsdoc2md lib/SessionToken.js > doc/api.md"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "doc": "jsdoc2md lib/SessionToken.js > docs/api.md"
   },
   "keywords": [
     "token",
@@ -33,7 +33,7 @@
     "coveralls": "^3.0.2",
     "ioredis": "^3.1.2",
     "mocha": "^4.0.1",
-    "mocha-spawn": "^3.0.3",
+    "mocha-spawn": "https://github.com/yunnysunny/mocha-spawn.git",
     "nyc": "^10.3.2"
   }
 }
