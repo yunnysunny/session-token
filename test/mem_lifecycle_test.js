@@ -68,20 +68,4 @@ describe('life ratio test#',function() {
             
     });
 
-    // it('show mem size',function(done) {
-    //     async.timesSeries(10,function(i,next) {
-    //         setTimeout(function() {
-    //             // slogger.init({level:'trace'});
-    //             console.log(
-    //                 'current mem size',
-    //                 // sessionTokenWithLru._lruList.size(),
-    //                 sessionToken.data.size,
-    //                 sessionToken._historyDataSize
-    //             );
-    //             next();
-    //         },1000);
-    //     },done);
-        
-        
-    // });
 });
