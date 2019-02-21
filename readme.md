@@ -72,7 +72,7 @@ async.waterfall([
 
 ## 3. Api
 
-See [here](https://github.com/yunnysunny/session-token/docs/api.md).
+See [here](https://github.com/yunnysunny/session-token/blob/master/docs/api.md).
 
 ## 4. License
 
