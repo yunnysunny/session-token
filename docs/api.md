@@ -163,8 +163,8 @@ The callback function, which will be called when data is cleared.
 | [cacheClearCallback] | [<code>CacheClearCallback</code>](#CacheClearCallback) |  |  |
 | [showMemSizeInterval] | <code>Number</code> | <code>0</code> | To show the current count of cache in memeory at `showMemSizeInterval` ms. When passed 0 , it will disabled. |
 | [idleCheckInterval] | <code>Number</code> | <code>0</code> | The interval of checking whether the item cached in memory is expired, default is 0, which will disable the checking. Only If both the parameter of `expireTime` and `idleCheckInterval` is  greater than 0 , the SesssionToken will enable the process of checking. |
-| [idleCheckPerCount] | <code>Number</code> | <code>0</code> | The count of items to check in one loop of the idle checking. |
-| memLifecycleRatio | <code>Float</code> |  | The lifecycle of the memeory cache, default is 1.0 , which means that it equals to the lifecycle of redis cache. |
+| [idleCheckPerCount] | <code>Number</code> | <code>30</code> | The count of items to check in one loop of the idle checking. |
+| [memLifecycleRatio] | <code>Float</code> | <code>1.0</code> | The lifecycle of the memeory cache, default is 1.0 , which means that it equals to the lifecycle of redis cache. |
 
 <a name="SessionTokenCallback"></a>
 
