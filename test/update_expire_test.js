@@ -70,7 +70,7 @@ describe('ignore update test#',function() {
                         return next(err);
                     }
                     const newttl = Number(reply);
-                    expect(newttl).to.be.lt(ttl);
+                    expect(newttl).to.be.lt(ttl).and.gt(0);
                     ttl = newttl;
                     next();
                 });

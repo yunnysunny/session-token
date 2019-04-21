@@ -1,3 +1,8 @@
+# v0.6.1
+## Fix
+
+1. Fix the problem of not setting the expired time in the function of update when `ignoreRefresh` set true.
+
 # v0.6.0
 ## Add
 
