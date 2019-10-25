@@ -1,3 +1,12 @@
+# v0.6.2
+## Remove
+
+1. Remove LRU algorithm.
+
+## Add
+
+1. Use class TokenCacheItem to save session data in memory.
+
 # v0.6.1
 ## Fix
 
