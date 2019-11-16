@@ -15,7 +15,7 @@ const sessionTokenWithLru = new SessionToken({
     expireTime:1,//the time of seconds before the session data expired
     redisKeyPrefix:'myprefix:idletoken:',//the redis key's prefix
     redis:redisClient,//the redis client object
-    subReis:redisSub,
+    subRedis:redisSub,
     maxSize:MAX_SIZE,
     // useLru:true,
     idleCheckInterval:1000,
@@ -26,7 +26,7 @@ const sessionTokenWithLru = new SessionToken({
 // const GET_LOOP_SIZE = LOOP_SIZE / 10;
 
 
-describe.only('idle check test',function() {
+describe('idle check test',function() {
     before(function() {
         slogger.init({level:'debug'});
     });

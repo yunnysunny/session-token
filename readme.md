@@ -36,7 +36,7 @@ const sessionToken = new SessionToken({
     expireTime:7200,//the time of seconds before the session data expired
     redisKeyPrefix:'myprefix:mytoken:',//the redis key's prefix
     redis:redisClient,//the redis client used to save session data
-    subReis:redisSub,//The subscribe redis client to receive delete operation
+    subRedis:redisSub,//The subscribe redis client to receive delete operation
     maxSize:1000000,// The max size of the cache in memory.
 });
 ```

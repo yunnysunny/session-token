@@ -1,3 +1,9 @@
+# v1.0.0
+## Breaking Changes
+
+1. The parameter of `subReis` has been renamed to `subRedis`.
+2. Removing all code associated with lru.
+
 # v0.6.2
 ## Remove
 
