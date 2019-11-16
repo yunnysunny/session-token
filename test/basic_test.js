@@ -7,7 +7,7 @@ const sessionToken = new SessionToken({
     expireTime:7200,//the time of seconds before the session data expired
     redisKeyPrefix:'myprefix:mytoken:',//the redis key's prefix
     redis:redisClient,//the redis client object
-    subReis:redisSub
+    subRedis:redisSub
 });
 const VALUE = {name:'sunny',id:1};
 const VALUE_UPDATE = {name:'sunny_new',id:1};

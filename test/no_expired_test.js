@@ -9,7 +9,7 @@ const sessionToken = new SessionToken({
     expireTime:0,//the time of seconds before the session data expired
     redisKeyPrefix:'long:mytoken:',//the redis key's prefix
     redis:redisClient,//the redis client object
-    subReis:redisSub,
+    subRedis:redisSub,
     maxSize:MAX_SIZE,
     // useLru:true
 });

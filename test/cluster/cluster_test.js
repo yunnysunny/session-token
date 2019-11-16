@@ -12,7 +12,7 @@ const sessionToken = new SessionToken({
     expireTime:7200,//the time of seconds before the session data expired
     redisKeyPrefix:'mycluster:mytoken:',//the redis key's prefix
     redis:redisClient,//the redis client object
-    subReis:redisSub
+    subRedis:redisSub
 });
 console.log(process.execArgv);
 

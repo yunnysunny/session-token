@@ -14,7 +14,7 @@ const sessionToken = new SessionToken({
     expireTime:REDIS_EXPIRE,//the time of seconds before the session data expired
     redisKeyPrefix:'myprefix:ratiotoken:',//the redis key's prefix
     redis:redisClient,//the redis client object
-    subReis:redisSub,
+    subRedis:redisSub,
     maxSize:MAX_SIZE,
     idleCheckInterval:1000,
     memLifecycleRatio:LIFE_RATIO

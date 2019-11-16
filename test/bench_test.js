@@ -11,45 +11,45 @@ const sessionTokenWithoutLru = new SessionToken({
     expireTime:7200,//the time of seconds before the session data expired
     redisKeyPrefix:'myprefix:mynolrutoken:',//the redis key's prefix
     redis:redisClient,//the redis client object
-    subReis:redisSub,
+    subRedis:redisSub,
     maxSize:MAX_SIZE,
     //showMemSizeInterval:10*1000
 });
 
 const VALUE = {name:'sunny',id:1};
 const LOOP_SIZE = 102400;
-const LruToken = new Array(LOOP_SIZE);
+const arrayToken = new Array(LOOP_SIZE);
 const GET_LOOP_SIZE = LOOP_SIZE / 10;
 
 
-describe('none lru benchmark test',function() {
+describe('benchmark test',function() {
     before(function() {
         slogger.init({level:'warn'});
     });
     
-    it('bench for none lur',function(done) {
+    it('bench for generate',function(done) {
         async.times(LOOP_SIZE,function(n,next) {
             sessionTokenWithoutLru.generate(VALUE,function(err,tokenViaCreate) {//save session
                 if (err) {
                     return next(err);
                 }
-                LruToken[n] = tokenViaCreate;
+                arrayToken[n] = tokenViaCreate;
                 next();
             });
         },done);
     });
-    it('get test without lru',function(done) {
+    it('get test',function(done) {
         async.times(GET_LOOP_SIZE,function(n,next) {
-            sessionTokenWithoutLru.get(LruToken[GET_LOOP_SIZE-1-n],next);
+            sessionTokenWithoutLru.get(arrayToken[GET_LOOP_SIZE-1-n],next);
         },done);
     });
-    it('get test without lru again',function(done) {
+    it('get test again',function(done) {
         async.times(GET_LOOP_SIZE,function(n,next) {
-            sessionTokenWithoutLru.get(LruToken[n],next);
+            sessionTokenWithoutLru.get(arrayToken[n],next);
         },done);
     });
-    it('remove all data create via none lru session token',function(done) {
-        async.each(LruToken,function(token,next) {
+    it('remove all data',function(done) {
+        async.each(arrayToken,function(token,next) {
             sessionTokenWithoutLru.delete(token,next);
         },done);
     });

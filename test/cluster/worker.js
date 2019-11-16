@@ -9,7 +9,7 @@ const sessionToken = new SessionToken({
     expireTime:7200,//the time of seconds before the session data expired
     redisKeyPrefix:'mycluster:mytoken:',//the redis key's prefix
     redis:redisClient,//the redis client object
-    subReis:redisSub,
+    subRedis:redisSub,
     subscribeCallback:function(operation,token,value) {
         console.log('subscribe',operation,token,value,'data after subscription :',sessionToken.data);
     },
