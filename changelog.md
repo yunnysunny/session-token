@@ -3,6 +3,7 @@
 1. Only print the warning of overflow once time and print the recovery message when the size is below `maxSize`.
 ## Add
 1. Add the parameter of `warpperClass`, which can be used to wrap the object in `get` function.
+
 # v1.0.0
 ## Breaking Changes
 
