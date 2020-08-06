@@ -1,3 +1,7 @@
+# v1.1.0
+## Improve
+1. Only print the warning of overflow once time and print the recovery message when the size is below `maxSize`.
+
 # v1.0.0
 ## Breaking Changes
 
