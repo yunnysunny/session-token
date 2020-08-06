@@ -3,11 +3,21 @@ const Redis = require('ioredis');
 const SessionToken = require('../index');
 const redisClient = new Redis();//connect to the redis server of localhost:6379
 const redisSub = new Redis();//the redis client for subscribe
+class Wrapper {
+    constructor(item) {
+        this.name = item.name;
+        this.id = item.id;
+    }
+    get desc() {
+        return this.name + ':' + this.id;
+    }
+}
 const sessionToken = new SessionToken({
     expireTime:7200,//the time of seconds before the session data expired
     redisKeyPrefix:'myprefix:mytoken:',//the redis key's prefix
     redis:redisClient,//the redis client object
-    subRedis:redisSub
+    subRedis:redisSub,
+    wrapperClass: Wrapper
 });
 const VALUE = {name:'sunny',id:1};
 const VALUE_UPDATE = {name:'sunny_new',id:1};
@@ -48,6 +58,7 @@ describe('basic test',function() {
                 return done(err);
             }
             expect(obj).to.have.property('name').and.equal(VALUE_UPDATE.name);
+            expect(obj.desc).to.be.equal(obj.name + ':' + obj.id);
             done();
         });
     });
