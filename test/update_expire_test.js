@@ -43,10 +43,15 @@ describe('ignore update test#',function() {
                     }
                     ttl = Number(reply);
                     expect(ttl).to.be.lte(REDIS_EXPIRE).and.gt(REDIS_EXPIRE - 20);
-                    const mem = sessionToken.data.get(token);
-                    expire = mem.expire;
-                    expect(expire).to.be.gt(0);
-                    next();
+                    sessionToken._getFromStorage(token, function(err, mem) {
+                        if (err) {
+                            return next(err);
+                        }
+                        expire = mem.expire;
+                        expect(expire).to.be.gt(0);
+                        next();
+                    });
+                    
                 });
             },
             function(next) {
@@ -59,9 +64,14 @@ describe('ignore update test#',function() {
                     if (err) {
                         return next(err);
                     }
-                    const mem = sessionToken.data.get(token);
-                    expect(mem.expire).to.be.equal(expire);
-                    next();
+                    sessionToken._getFromStorage(token, function(err, mem) {
+                        if (err) {
+                            return next(err);
+                        }
+                        expect(mem.expire).to.be.equal(expire);
+                        next();
+                    });
+                    
                 },true)
             },
             function(next) {
@@ -81,9 +91,14 @@ describe('ignore update test#',function() {
                     if (err) {
                         return next(err);
                     }
-                    const mem = sessionToken.data.get(token);
-                    expect(mem.expire).to.be.gt(expire);
-                    next();
+                    sessionToken._getFromStorage(token, function(err, mem) {
+                        if (err) {
+                            return next(err);
+                        }
+                        expect(mem.expire).to.be.gt(expire);
+                        next();
+                    });
+                    
                 });
             },
             function(next) {

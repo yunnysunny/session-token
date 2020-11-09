@@ -41,9 +41,16 @@ describe('fixed max size test',function() {
             if (err) {
                 return done(err);
             }
-            expect(sessionToken.data.size).to.be.equal(MAX_SIZE);
-            token = tokenViaCreate;
-            done();
+            sessionToken.getStorageSize(function(err, size) {
+                if (err) {
+                    return done(err);
+                }
+    
+                expect(size).to.be.equal(MAX_SIZE);
+                token = tokenViaCreate;
+                done();
+            });
+            
         });
 
         

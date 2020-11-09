@@ -90,7 +90,7 @@ mochaSpawn.on('generate', function (token) {
         }
         expect(value.name).to.be.equal(FIRST_VALUE.name);
         expect(value.id).to.be.equal(FIRST_VALUE.id);
-        console.log('after generate',sessionToken.data.size);
+        // console.log('after generate',sessionToken.data.size);
         mochaSpawn.send('child-get-after-generate',err,value);
     });
 

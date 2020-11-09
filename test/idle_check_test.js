@@ -45,14 +45,21 @@ describe('idle check test',function() {
     it('show mem size',function(done) {
         async.timesSeries(CHECK_TIMES,function(i,next) {
             setTimeout(function() {
-                // slogger.init({level:'trace'});
-                console.log(
-                    'current mem size',
-                    // sessionTokenWithLru._lruList.size(),
-                    sessionTokenWithLru.data.size,
-                    sessionTokenWithLru._historyDataSize
-                );
-                next();
+                sessionTokenWithLru.getStorageSize(function(err, size) {
+                    if (err) {
+                        return done(err);
+                    }
+        
+                    console.log(
+                        'current mem size',
+                        // sessionTokenWithLru._lruList.size(),
+                        sessionTokenWithLru._cacheInstance.data.size,
+                        sessionTokenWithLru._historyDataSize
+                    );
+                    next();
+                });
+                
+                
             },1000);
         },function() {
             done();

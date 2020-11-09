@@ -22,7 +22,7 @@ const arrayToken = new Array(LOOP_SIZE);
 const GET_LOOP_SIZE = LOOP_SIZE / 10;
 
 
-describe('benchmark test',function() {
+describe.skip('benchmark test',function() {
     before(function() {
         slogger.init({level:'warn'});
     });
