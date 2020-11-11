@@ -1,3 +1,7 @@
+# v2.0.0
+## Add
+1. Add the ablity of saving cache data into file.
+
 # v1.1.0
 ## Improve
 1. Only print the warning of overflow once time and print the recovery message when the size is below `maxSize`.
