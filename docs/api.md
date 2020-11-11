@@ -5,6 +5,13 @@
 <dd></dd>
 </dl>
 
+## Functions
+
+<dl>
+<dt><a href="#cacheFactory">cacheFactory(cacheType)</a> ⇒ <code>AbstractCache</code></dt>
+<dd></dd>
+</dl>
+
 ## Typedefs
 
 <dl>
@@ -43,7 +50,7 @@
 
 | Param | Type |
 | --- | --- |
-| option | [<code>SessionTokenOption</code>](#SessionTokenOption) | 
+| option | [<code>SessionTokenOption</code>](#SessionTokenOption) |
 
 <a name="SessionToken+generate"></a>
 
@@ -80,8 +87,8 @@ Refresh the expire time of session data saved in redis and memeory.
 
 | Param | Type |
 | --- | --- |
-| token | <code>String</code> | 
-| callback | [<code>SessionTokenCallback</code>](#SessionTokenCallback) | 
+| token | <code>String</code> |
+| callback | [<code>SessionTokenCallback</code>](#SessionTokenCallback) |
 
 <a name="SessionToken+get"></a>
 
@@ -92,8 +99,8 @@ Get session data via token
 
 | Param | Type |
 | --- | --- |
-| token | <code>String</code> | 
-| callback | [<code>SessionTokenCallback</code>](#SessionTokenCallback) | 
+| token | <code>String</code> |
+| callback | [<code>SessionTokenCallback</code>](#SessionTokenCallback) |
 
 <a name="SessionToken+delete"></a>
 
@@ -104,8 +111,17 @@ Delete session data via token
 
 | Param | Type |
 | --- | --- |
-| token | <code>String</code> | 
-| callback | [<code>SessionTokenCallback</code>](#SessionTokenCallback) | 
+| token | <code>String</code> |
+| callback | [<code>SessionTokenCallback</code>](#SessionTokenCallback) |
+
+<a name="cacheFactory"></a>
+
+## cacheFactory(cacheType) ⇒ <code>AbstractCache</code>
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| cacheType | <code>String</code> |
 
 <a name="SubscribeCallback"></a>
 
@@ -116,9 +132,9 @@ The callback function , which will be triggered when new message form redis subs
 
 | Param | Type |
 | --- | --- |
-| operation | <code>String</code> | 
-| token | <code>String</code> | 
-| [value] | <code>String</code> | 
+| operation | <code>String</code> |
+| token | <code>String</code> |
+| [value] | <code>String</code> |
 
 <a name="CacheWriteCallback"></a>
 
@@ -129,8 +145,8 @@ The callback function ,which will be called when data is cached into memory.
 
 | Param | Type |
 | --- | --- |
-| token | <code>String</code> | 
-| value | <code>String</code> | 
+| token | <code>String</code> |
+| value | <code>String</code> |
 
 <a name="CacheClearCallback"></a>
 
@@ -155,8 +171,7 @@ The callback function, which will be called when data is cleared.
 | reids | <code>Object</code> |  | The redis client used to save session data |
 | [subRedis] | <code>Object</code> |  | The subscribe redis client to receive delete operation form other node.js process, it's useful when you start node in cluster mode. |
 | [crontabStr] | <code>String</code> |  | Crontab string, use for clearing the memeory cache. |
-| [maxSize] | <code>Number</code> | <code>0</code> | The max size of the cache in memory, default is 0, which will not limit the size of cache in memory. When it passed as -1, the cache in memory will be disabled. |
-| [useLru] | <code>Boolean</code> | <code>false</code> | Whether to use LRU algorithm to delete the elder elements. It only takes effect when `option.maxSize` is greater than zero. |
+| [maxSize] | <code>Number</code> | <code>0</code> | The max size of the cache, default is 0, which will not limit the size of cache. When it passed as -1, the cache in memory or file will be disabled. |
 | [clusteId] | <code>String</code> |  | An id of current process, when not set, it will use random string.  When do the operation of delete or update, SessionToken will publish a message, which is started with a perfix of current clusterId, to redis. Then all the  processes will receive the message  and read the clusterId of the message to check whether it from self. But when the subRedis is not set, the `clusterId` is useless now. |
 | [subscribeCallback] | [<code>SubscribeCallback</code>](#SubscribeCallback) |  | The callback function , which will be triggered when new message form redis subscription. |
 | [cacheWriteCallback] | [<code>CacheWriteCallback</code>](#CacheWriteCallback) |  |  |
@@ -165,6 +180,11 @@ The callback function, which will be called when data is cleared.
 | [idleCheckInterval] | <code>Number</code> | <code>0</code> | The interval of checking whether the item cached in memory is expired, default is 0, which will disable the checking. Only If both the parameter of `expireTime` and `idleCheckInterval` is  greater than 0 , the SesssionToken will enable the process of checking. |
 | [idleCheckPerCount] | <code>Number</code> | <code>30</code> | The count of items to check in one loop of the idle checking. |
 | [memLifecycleRatio] | <code>Float</code> | <code>1.0</code> | The lifecycle of the memeory cache, default is 1.0 , which means that it equals to the lifecycle of redis cache. |
+| [wrapperClass] | <code>Class</code> |  | The class which will use to |
+| [cacheDirectory] | <code>String</code> |  | The directory which will been used to save cache data in it. When this parameter is given, SessionToken will cache the data in files, otherwise it will cache the data in memory. |
+| [encoder] | <code>function</code> | <code>JSON.stringify</code> | The encode function used by FileCache. |
+| [decoder] | <code>function</code> | <code>JSON.parse</code> | The decode function used by FileCache. |
+| [cacheType] | <code>String</code> | <code>memory</code> | The cache type used to store the session data fetched from redis. You can set it to `memory` or `file`. |
 
 <a name="SessionTokenCallback"></a>
 
@@ -175,7 +195,7 @@ SessionToken callback function.
 
 | Param | Type |
 | --- | --- |
-| err | <code>Error</code> | 
-| data | <code>Object</code> \| <code>String</code> \| <code>undefined</code> | 
-| hitMemCache | <code>Boolean</code> | 
+| err | <code>Error</code> |
+| data | <code>Object</code> \| <code>String</code> \| <code>undefined</code> |
+| hitMemCache | <code>Boolean</code> |
 
