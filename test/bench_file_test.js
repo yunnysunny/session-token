@@ -58,6 +58,6 @@ describe('file benchmark test',function() {
         setTimeout(function() {
             slogger.init({level:'trace'});
             done();
-        },3000);
+        },300);
     });
 });
