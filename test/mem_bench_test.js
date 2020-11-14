@@ -17,12 +17,12 @@ const sessionTokenWithoutLru = new SessionToken({
 });
 
 const VALUE = {name:'sunny',id:1};
-const LOOP_SIZE = 10240;
+const LOOP_SIZE = 1020;
 const arrayToken = new Array(LOOP_SIZE);
 const GET_LOOP_SIZE = LOOP_SIZE / 10;
 
 
-describe('benchmark test',function() {
+describe('memory_benchmark test',function() {
     before(function() {
         slogger.init({level:'warn'});
     });
