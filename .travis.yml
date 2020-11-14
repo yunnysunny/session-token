@@ -13,6 +13,8 @@ node_js:
 install:
   make travis-install
 
+before_install: mkdir -p /var/session
+
 script: make travis-run
 
 after_script: npm run coverage
