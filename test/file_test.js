@@ -14,7 +14,7 @@ class Wrapper {
         return this.name + ':' + this.id;
     }
 }
-const SAVE_PATH = '/var/session';
+const SAVE_PATH = '/home/travis/var/session';
 const sessionToken = new SessionToken({
     expireTime:7200,//the time of seconds before the session data expired
     redisKeyPrefix:'myprefix:myfile:',//the redis key's prefix

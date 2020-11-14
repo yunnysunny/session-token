@@ -13,7 +13,7 @@ node_js:
 install:
   make travis-install
 
-before_install: mkdir -p /var/session
+before_install: mkdir -p /home/travis/var/session
 
 script: make travis-run
 
