@@ -5,7 +5,7 @@ const slogger = require('node-slogger');
 const SessionToken = require('../index');
 const redisClient = new Redis();//connect to the redis server of localhost:6379
 const redisSub = new Redis();//the redis client for subscribe
-const MAX_SIZE = -1;
+const MAX_SIZE = 8192;
 
 const sessionToken = new SessionToken({
     expireTime:7200,//the time of seconds before the session data expired

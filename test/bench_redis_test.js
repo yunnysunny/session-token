@@ -5,16 +5,14 @@ const slogger = require('node-slogger');
 const SessionToken = require('../index');
 const redisClient = new Redis();//connect to the redis server of localhost:6379
 const redisSub = new Redis();//the redis client for subscribe
-const MAX_SIZE = 8192;
-const SAVE_PATH = '/home/travis/var/session';
+const MAX_SIZE = -1;
 const sessionToken = new SessionToken({
     expireTime:7200,//the time of seconds before the session data expired
-    redisKeyPrefix:'myprefix:filetoken:',//the redis key's prefix
+    redisKeyPrefix:'myprefix:onlyuseredis:',//the redis key's prefix
     redis:redisClient,//the redis client object
     subRedis:redisSub,
     maxSize:MAX_SIZE,
-    cacheDirectory: SAVE_PATH,
-    cacheType: 'file'
+
 });
 
 const VALUE = {name:'sunny',id:1};
