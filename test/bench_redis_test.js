@@ -21,7 +21,7 @@ const arrayToken = new Array(LOOP_SIZE);
 const GET_LOOP_SIZE = LOOP_SIZE / 10;
 
 
-describe('file benchmark test',function() {
+describe('redis benchmark test',function() {
     before(function() {
         slogger.init({level:'warn'});
     });
