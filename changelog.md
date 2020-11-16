@@ -1,3 +1,7 @@
+# v2.0.1
+## Improve
+1. Wait local cache writing finish before generate function return.
+
 # v2.0.0
 ## Add
 1. Add the ablity of saving cache data into file.
