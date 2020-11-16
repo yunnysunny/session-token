@@ -5,7 +5,7 @@ const slogger = require('node-slogger');
 const SessionToken = require('../index');
 const redisClient = new Redis();//connect to the redis server of localhost:6379
 const redisSub = new Redis();//the redis client for subscribe
-const MAX_SIZE = 102400;
+const MAX_SIZE = 10240;
 const sessionToken = new SessionToken({
     expireTime:7200,//the time of seconds before the session data expired
     redisKeyPrefix:'myprefix:mytoken:',//the redis key's prefix
@@ -41,9 +41,16 @@ describe('fixed max size test',function() {
             if (err) {
                 return done(err);
             }
-            expect(sessionToken.data.size).to.be.equal(MAX_SIZE);
-            token = tokenViaCreate;
-            done();
+            sessionToken.getStorageSize(function(err, size) {
+                if (err) {
+                    return done(err);
+                }
+    
+                expect(size).to.be.equal(MAX_SIZE);
+                token = tokenViaCreate;
+                done();
+            });
+            
         });
 
         

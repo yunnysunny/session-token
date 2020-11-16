@@ -1,63 +1,55 @@
 const {expect} = require('chai');
-const async = require('neo-async');
 const Redis = require('ioredis');
+const path = require('path');
+const fs = require('fs');
 const SessionToken = require('../index');
 const redisClient = new Redis();//connect to the redis server of localhost:6379
 const redisSub = new Redis();//the redis client for subscribe
-const MAX_SIZE = 3;
+class Wrapper {
+    constructor(item) {
+        this.name = item.name;
+        this.id = item.id;
+    }
+    get desc() {
+        return this.name + ':' + this.id;
+    }
+}
+const SAVE_PATH = '/home/travis/var/session';
 const sessionToken = new SessionToken({
-    expireTime:0,//the time of seconds before the session data expired
-    redisKeyPrefix:'long:mytoken:',//the redis key's prefix
+    expireTime:7200,//the time of seconds before the session data expired
+    redisKeyPrefix:'myprefix:myfile:',//the redis key's prefix
     redis:redisClient,//the redis client object
     subRedis:redisSub,
-    maxSize:MAX_SIZE,
-    // useLru:true
+    wrapperClass: Wrapper,
+    cacheDirectory: SAVE_PATH,
+    cacheType: 'file'
 });
 const VALUE = {name:'sunny',id:1};
 const VALUE_UPDATE = {name:'sunny_new',id:1};
 let token = null;
 
-describe('save the token without expired time',function() {
-    it ('should generate '+MAX_SIZE+'th tokens success',function(done) {
-        async.times(MAX_SIZE,function(n,next) {
-            sessionToken.generate(VALUE,function(err/*,tokenViaCreate*/) {//save session
-                if (err) {
-                    return next(err);
-                }
-                
-                next();
-            });
-        },done);
-        
-    });
+function _getFilePath(token) {
+    return path.join(SAVE_PATH, `${token}.json`);
+}
 
-    it ('should only cache '+MAX_SIZE+' tokens in memory ',function(done) {
-
+describe('file test',function() {
+    it ('should generate success',function(done) {
         sessionToken.generate(VALUE,function(err,tokenViaCreate) {//save session
             if (err) {
                 return done(err);
             }
-            sessionToken.getStorageSize(function(err, size) {
-                if (err) {
-                    return done(err);
-                }
-    
-                expect(size).to.be.equal(MAX_SIZE);
-                token = tokenViaCreate;
-                done();
-            });
-            
+            token = tokenViaCreate;
+            done();
         });
-
-        
     });
 
     it ('should get success',function(done) {
-        sessionToken.get(token,function(err,obj) {
+        sessionToken.get(token,function(err,obj, hit) {
             if (err) {
                 return done(err);
             }
             expect(obj).to.have.property('name').and.equal(VALUE.name);
+            expect(hit).to.be.equal(true);
             done();
         });
     });
@@ -76,6 +68,7 @@ describe('save the token without expired time',function() {
                 return done(err);
             }
             expect(obj).to.have.property('name').and.equal(VALUE_UPDATE.name);
+            expect(obj.desc).to.be.equal(obj.name + ':' + obj.id);
             done();
         });
     });
@@ -97,6 +90,13 @@ describe('save the token without expired time',function() {
             done();
         });
     });
+    it('the file should not exist', function(done) {
+        const filename = _getFilePath(token);
+        fs.access(filename, function(err) {
+            expect(err).to.have.property('code').and.to.be.equal('ENOENT');
+            done();
+        });
+    });
 
     it ('should call get with no data',function(done) {
         sessionToken.get(token,function(err,obj) {
@@ -104,6 +104,13 @@ describe('save the token without expired time',function() {
                 return done(err);
             }
             expect(obj).equal(false);
+            done();
+        });
+    });
+    it('the file should not exist', function(done) {
+        const filename = _getFilePath(token);
+        fs.access(filename, function(err) {
+            expect(err).to.have.property('code').and.to.be.equal('ENOENT');
             done();
         });
     });

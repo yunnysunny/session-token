@@ -35,8 +35,15 @@ describe('disabled memeory cache test#',function() {
     });
 
     it('the memeory cache size should be zero',function(done) {
-        expect(sessionToken.data.size).to.be.equal(0);
-        done();
+        sessionToken.getStorageSize(function(err, size) {
+            if (err) {
+                return done(err);
+            }
+
+            expect(size).to.be.equal(0);
+            done();
+        });
+        
     });
 
     it ('should get success',function(done) {

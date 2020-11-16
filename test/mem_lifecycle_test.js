@@ -37,7 +37,7 @@ describe('life ratio test#',function() {
                 });
             },
             function(token,next) {
-                const item = sessionToken.data.get(token);
+                const item = sessionToken._cacheInstance.data.get(token);
                 
                 expect(item).to.be.not.undefined;
                 expect(item.expire).to.be.gt(0).and.lte(Date.now() + lifecycle);
