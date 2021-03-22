@@ -1,3 +1,7 @@
+# v2.1.0
+## Add
+1. Use the given id to generate data in redis and cache.
+
 # v2.0.1
 ## Improve
 1. Wait local cache writing finish before generate function return.

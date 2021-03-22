@@ -38,7 +38,7 @@
 
 * [SessionToken](#SessionToken)
     * [new SessionToken(option)](#new_SessionToken_new)
-    * [.generate(value, callback)](#SessionToken+generate)
+    * [.generate(value, callback, [id])](#SessionToken+generate)
     * [.update(token, value, callback, [ignoreRefresh])](#SessionToken+update)
     * [.refresh(token, callback)](#SessionToken+refresh)
     * [.get(token, callback)](#SessionToken+get)
@@ -50,11 +50,11 @@
 
 | Param | Type |
 | --- | --- |
-| option | [<code>SessionTokenOption</code>](#SessionTokenOption) |
+| option | [<code>SessionTokenOption</code>](#SessionTokenOption) | 
 
 <a name="SessionToken+generate"></a>
 
-### sessionToken.generate(value, callback)
+### sessionToken.generate(value, callback, [id])
 Genrate a new token and save its associated data in redis and memeory.
 
 **Kind**: instance method of [<code>SessionToken</code>](#SessionToken)  
@@ -63,6 +63,7 @@ Genrate a new token and save its associated data in redis and memeory.
 | --- | --- | --- |
 | value | <code>Object</code> | The value of session |
 | callback | [<code>SessionTokenCallback</code>](#SessionTokenCallback) |  |
+| [id] | <code>String</code> | Save data with given id, use random key if not set. |
 
 <a name="SessionToken+update"></a>
 
@@ -87,8 +88,8 @@ Refresh the expire time of session data saved in redis and memeory.
 
 | Param | Type |
 | --- | --- |
-| token | <code>String</code> |
-| callback | [<code>SessionTokenCallback</code>](#SessionTokenCallback) |
+| token | <code>String</code> | 
+| callback | [<code>SessionTokenCallback</code>](#SessionTokenCallback) | 
 
 <a name="SessionToken+get"></a>
 
@@ -99,8 +100,8 @@ Get session data via token
 
 | Param | Type |
 | --- | --- |
-| token | <code>String</code> |
-| callback | [<code>SessionTokenCallback</code>](#SessionTokenCallback) |
+| token | <code>String</code> | 
+| callback | [<code>SessionTokenCallback</code>](#SessionTokenCallback) | 
 
 <a name="SessionToken+delete"></a>
 
@@ -111,8 +112,8 @@ Delete session data via token
 
 | Param | Type |
 | --- | --- |
-| token | <code>String</code> |
-| callback | [<code>SessionTokenCallback</code>](#SessionTokenCallback) |
+| token | <code>String</code> | 
+| callback | [<code>SessionTokenCallback</code>](#SessionTokenCallback) | 
 
 <a name="cacheFactory"></a>
 
@@ -121,7 +122,7 @@ Delete session data via token
 
 | Param | Type |
 | --- | --- |
-| cacheType | <code>String</code> |
+| cacheType | <code>String</code> | 
 
 <a name="SubscribeCallback"></a>
 
@@ -132,9 +133,9 @@ The callback function , which will be triggered when new message form redis subs
 
 | Param | Type |
 | --- | --- |
-| operation | <code>String</code> |
-| token | <code>String</code> |
-| [value] | <code>String</code> |
+| operation | <code>String</code> | 
+| token | <code>String</code> | 
+| [value] | <code>String</code> | 
 
 <a name="CacheWriteCallback"></a>
 
@@ -145,8 +146,8 @@ The callback function ,which will be called when data is cached into memory.
 
 | Param | Type |
 | --- | --- |
-| token | <code>String</code> |
-| value | <code>String</code> |
+| token | <code>String</code> | 
+| value | <code>String</code> | 
 
 <a name="CacheClearCallback"></a>
 
@@ -195,7 +196,7 @@ SessionToken callback function.
 
 | Param | Type |
 | --- | --- |
-| err | <code>Error</code> |
-| data | <code>Object</code> \| <code>String</code> \| <code>undefined</code> |
-| hitMemCache | <code>Boolean</code> |
+| err | <code>Error</code> | 
+| data | <code>Object</code> \| <code>String</code> \| <code>undefined</code> | 
+| hitMemCache | <code>Boolean</code> | 
 

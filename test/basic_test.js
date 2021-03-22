@@ -22,8 +22,28 @@ const sessionToken = new SessionToken({
 const VALUE = {name:'sunny',id:1};
 const VALUE_UPDATE = {name:'sunny_new',id:1};
 let token = null;
+const GIVEN_ID = Math.random() + '';
 
 describe('basic test',function() {
+    it ('should generate with given id success',function(done) {
+        sessionToken.generate(VALUE,function(err) {//save session
+            if (err) {
+                return done(err);
+            }
+            done();
+        }, GIVEN_ID);
+    });
+
+    it ('should get with given id success',function(done) {
+        sessionToken.get(GIVEN_ID,function(err,obj) {
+            if (err) {
+                return done(err);
+            }
+            expect(obj).to.have.property('name').and.equal(VALUE.name);
+            done();
+        });
+    });
+
     it ('should generate success',function(done) {
         sessionToken.generate(VALUE,function(err,tokenViaCreate) {//save session
             if (err) {
