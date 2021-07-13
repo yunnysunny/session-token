@@ -1,3 +1,7 @@
+# v2.1.1
+## Fix
+1. Ignore the error triggered by getting data from cache.
+
 # v2.1.0
 ## Add
 1. Use the given id to generate data in redis and cache.

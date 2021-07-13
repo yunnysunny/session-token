@@ -114,4 +114,29 @@ describe('file test',function() {
             done();
         });
     });
+    it ('should generate success again',function(done) {
+        sessionToken.generate(VALUE,function(err,tokenViaCreate) {//save session
+            if (err) {
+                return done(err);
+            }
+            token = tokenViaCreate;
+            done();
+        });
+    });
+    it('overwirte the token file', function(done) {
+        const filename = _getFilePath(token);
+        fs.writeFile(filename, "", function(err) {
+            done(err);
+        });
+    });
+    it('should get data success even if the file is dirty', function(done) {
+        sessionToken.get(token,function(err,obj, hit) {
+            if (err) {
+                return done(err);
+            }
+            expect(obj).to.have.property('name').and.equal(VALUE.name);
+            expect(hit).to.be.equal(false);
+            done();
+        });
+    });
 });
