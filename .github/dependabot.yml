@@ -10,4 +10,3 @@ updates:
       - npm-mirror
     schedule:
       interval: "weekly"
-    registry-url: https://registry.npmmirror.com
