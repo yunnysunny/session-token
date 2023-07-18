@@ -12,7 +12,7 @@ const sessionToken = new SessionToken({
     expireTime:7200,//the time of seconds before the session data expired
     redisKeyPrefix:'mycluster:mytoken:',//the redis key's prefix
     redis:redisClient,//the redis client object
-    subReis:redisSub
+    subRedis:redisSub
 });
 console.log(process.execArgv);
 
@@ -98,16 +98,6 @@ describe('cluster test in master process',function() {
         });
     });
     it ('should generate again success',function(done) {
-        sessionToken.generate(FIRST_VALUE,function(err,tokenViaCreate) {//save session
-            if (err) {
-                return done(err);
-            }
-            _sendToChild('generate2',tokenViaCreate);
-            secondToken = tokenViaCreate;
-            done();
-        });
-    });
-    it('should get the same value form child process again',function(done) {
         childProcess.on('child-get-after-generate2',function(err,value) {
             if (err) {
                 return done(err);
@@ -116,7 +106,18 @@ describe('cluster test in master process',function() {
             expect(value.id).to.be.equal(FIRST_VALUE.id);
             done();
         });
+        sessionToken.generate(FIRST_VALUE,function(err,tokenViaCreate) {//save session
+            if (err) {
+                return done(err);
+            }
+            _sendToChild('generate2',tokenViaCreate);
+            secondToken = tokenViaCreate;
+            // done();
+        });
     });
+    // it('should get the same value form child process again',function(done) {
+        
+    // });
     it('shold delete token success',function(done) {
         sessionToken.delete(secondToken,function(err) {
             if (err) {

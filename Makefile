@@ -1,5 +1,6 @@
 PATH := ./redis-git/src:${PATH}
 REDIS_DIR := redis-3.2.11
+F1_EXISTS := $(shell [ ! -e $(REDIS_DIR)/src/redis-server ] && echo 1 || echo 0 )
 
 # CLUSTER REDIS NODES
 define NODE1_CONF
@@ -137,8 +138,7 @@ travis-run:
 	#make stop
 
 travis-install:
-	[ ! -e $(REDIS_DIR) ] && wget http://download.redis.io/releases/$(REDIS_DIR).tar.gz || true
-	tar -xzvf $(REDIS_DIR).tar.gz
-	make -C $(REDIS_DIR) -j4
-	sleep 3
+	@if [ ! -e $(REDIS_DIR)/src/redis-server ]; then wget http://download.redis.io/releases/$(REDIS_DIR).tar.gz && tar -xzvf $(REDIS_DIR).tar.gz && make -C $(REDIS_DIR) -j4 &&	sleep 3; fi
 	gem install redis
+
+	

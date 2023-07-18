@@ -1,4 +1,20 @@
 # SessionToken
+
+[![build status][travis-image]][travis-url]
+[![Test coverage][coveralls-image]][coveralls-url]
+[![David deps][david-image]][david-url]
+[![node version][node-image]][node-url]
+
+[npm-url]: https://npmjs.org/package/session-token
+[travis-image]: https://img.shields.io/travis/yunnysunny/session-token.svg?style=flat-square
+[travis-url]: https://travis-ci.org/yunnysunny/session-token
+[coveralls-image]: https://img.shields.io/coveralls/yunnysunny/session-token.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/yunnysunny/session-token?branch=master
+[david-image]: https://img.shields.io/david/yunnysunny/session-token.svg?style=flat-square
+[david-url]: https://david-dm.org/yunnysunny/session-token
+[node-image]: https://img.shields.io/badge/node.js-%3E=_6-green.svg?style=flat-square
+[node-url]: http://nodejs.org/download/
+
 [![NPM](https://nodei.co/npm/session-token.png?downloads=true)](https://nodei.co/npm/session-token/)  
 A library to create token and save associated session data in redis easily.
 
@@ -20,7 +36,7 @@ const sessionToken = new SessionToken({
     expireTime:7200,//the time of seconds before the session data expired
     redisKeyPrefix:'myprefix:mytoken:',//the redis key's prefix
     redis:redisClient,//the redis client used to save session data
-    subReis:redisSub,//The subscribe redis client to receive delete operation
+    subRedis:redisSub,//The subscribe redis client to receive delete operation
     maxSize:1000000,// The max size of the cache in memory.
 });
 ```
@@ -56,7 +72,7 @@ async.waterfall([
 
 ## 3. Api
 
-See [here](https://doclets.io/yunnysunny/session-token/master).
+See [here](https://github.com/yunnysunny/session-token/blob/master/docs/api.md).
 
 ## 4. License
 

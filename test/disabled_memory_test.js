@@ -7,7 +7,7 @@ const sessionToken = new SessionToken({
     expireTime:7200,//the time of seconds before the session data expired
     redisKeyPrefix:'disabled_mem:mytoken:',//the redis key's prefix
     redis:redisClient,//the redis client object
-    subReis:redisSub,
+    subRedis:redisSub,
     maxSize:-1
 });
 const VALUE = {name:'sunny',id:1};
@@ -35,8 +35,15 @@ describe('disabled memeory cache test#',function() {
     });
 
     it('the memeory cache size should be zero',function(done) {
-        expect(sessionToken.data.size).to.be.equal(0);
-        done();
+        sessionToken.getStorageSize(function(err, size) {
+            if (err) {
+                return done(err);
+            }
+
+            expect(size).to.be.equal(0);
+            done();
+        });
+        
     });
 
     it ('should get success',function(done) {

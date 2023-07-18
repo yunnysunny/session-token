@@ -9,7 +9,7 @@ const sessionToken = new SessionToken({
     expireTime:7200,//the time of seconds before the session data expired
     redisKeyPrefix:'mycluster:mytoken:',//the redis key's prefix
     redis:redisClient,//the redis client object
-    subReis:redisSub,
+    subRedis:redisSub,
     subscribeCallback:function(operation,token,value) {
         console.log('subscribe',operation,token,value,'data after subscription :',sessionToken.data);
     },
@@ -90,7 +90,7 @@ mochaSpawn.on('generate', function (token) {
         }
         expect(value.name).to.be.equal(FIRST_VALUE.name);
         expect(value.id).to.be.equal(FIRST_VALUE.id);
-        console.log('after generate',sessionToken.data.size);
+        // console.log('after generate',sessionToken.data.size);
         mochaSpawn.send('child-get-after-generate',err,value);
     });
 

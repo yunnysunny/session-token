@@ -9,7 +9,7 @@ const sessionToken = new SessionToken({
     expireTime:0,//the time of seconds before the session data expired
     redisKeyPrefix:'long:mytoken:',//the redis key's prefix
     redis:redisClient,//the redis client object
-    subReis:redisSub,
+    subRedis:redisSub,
     maxSize:MAX_SIZE,
     // useLru:true
 });
@@ -37,9 +37,16 @@ describe('save the token without expired time',function() {
             if (err) {
                 return done(err);
             }
-            expect(sessionToken.data.size).to.be.equal(MAX_SIZE);
-            token = tokenViaCreate;
-            done();
+            sessionToken.getStorageSize(function(err, size) {
+                if (err) {
+                    return done(err);
+                }
+    
+                expect(size).to.be.equal(MAX_SIZE);
+                token = tokenViaCreate;
+                done();
+            });
+            
         });
 
         
